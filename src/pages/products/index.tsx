@@ -20,6 +20,7 @@ interface ProductsPageProps {
 const ProductsPage: React.FC<ProductsPageProps> = ({ products }) => {
   return (
     <>
+    <main>
       <div className={s.products_page}>
         <div className={s.products_page__sidebar}>
           <Sidebar products={products} />
@@ -35,6 +36,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ products }) => {
           </div>
         </div>
       </div >
+      </main>
     </>
 
   );
