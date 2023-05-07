@@ -17,11 +17,7 @@
       li {
         margin-bottom: 10px;
         list-style: none;
-        &.active {
-          a {
-            font-weight: 900;
-          }
-        }
+
         a {
           font-family: "Roboto";
           font-size: 18px;
@@ -30,6 +26,12 @@
           text-decoration: none;
           text-transform: capitalize;
           &:hover {
+            color: #ff6c00;
+          }
+        }
+        &.active {
+          a {
+            font-weight: 900;
             color: #ff6c00;
           }
         }

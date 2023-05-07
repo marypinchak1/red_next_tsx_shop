@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GetStaticProps } from "next";
 import ProductCard from "../../components/products_card";
 import Sidebar from "../../components/sidebar";
@@ -18,27 +18,45 @@ interface ProductsPageProps {
 }
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ products }) => {
+  const [currentCategory, setCurrentCategory] = useState("all");
+  const [productsList, setProductsList] = useState(products);
+  // change category
+  const changeCategory = (category: string) => {
+    // set current category
+    setCurrentCategory(category);
+    // filter products by category
+    if (category === "all") {
+      setProductsList(products);
+    } else {
+      const filteredProducts = products.filter(
+        (product) => product.category === category
+      );
+      setProductsList(filteredProducts);
+    }
+  };
   return (
     <>
-    <main>
-      <div className={s.products_page}>
-        <div className={s.products_page__sidebar}>
-          <Sidebar products={products} />
-        </div>
+      <main>
+        <div className={s.products_page}>
+          <div className={s.products_page__sidebar}>
+            <Sidebar
+              currentCategory={currentCategory}
+              setCategory={changeCategory}
+              products={products}
+            />
+          </div>
 
-
-        <div className={s.products_page__content}>
-          <h1>Всі товари</h1>
-          <div className={s.products}>
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div className={s.products_page__content}>
+            <h1>Всі товари</h1>
+            <div className={s.products}>
+              {productsList.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
           </div>
         </div>
-      </div >
       </main>
     </>
-
   );
 };
 
