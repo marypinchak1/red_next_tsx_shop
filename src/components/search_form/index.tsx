@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import s from './index.module.scss';
-import Image from "next/image";
-import Glass from "../../assets/images/search-glass.png";
 
 
 
@@ -19,7 +17,7 @@ const SearchForm = () => {
       <input
         type="text"
         id="search"
-        placeholder={<Image src={Glass} alt="search glass" /> + 'Пошук'} 
+        placeholder='Пошук'
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
