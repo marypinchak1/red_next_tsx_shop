@@ -3,6 +3,12 @@
   background-color: black;
   color: white;
   padding: 10px 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  
   &__container {
     display: flex;
     align-items: center;
